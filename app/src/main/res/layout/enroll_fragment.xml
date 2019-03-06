@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <LinearLayout
+            android:layout_marginTop="96dp"
+            android:id="@+id/email_container"
+            android:orientation="horizontal"
+            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="24dp">
+        <TextView
+                android:layout_marginStart="24dp"
+                android:text="User Name:"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+        <EditText
+                android:id="@+id/email_edit"
+                android:layout_marginStart="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:layout_below="@id/email_container"
+            android:id="@+id/secret_container"
+            android:orientation="horizontal"
+            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginTop="24dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="24dp">
+        <TextView
+                android:layout_marginStart="24dp"
+                android:text="Secret Number:"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+        <EditText
+                android:id="@+id/secret_edit"
+                android:layout_marginStart="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_below="@id/secret_container"
+            android:id="@+id/password_container"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginTop="24dp">
+        <Button
+                android:id="@+id/btn_enroll"
+                android:text="Enroll"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="12dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="16dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"/>
+        <Button
+                android:id="@+id/btn_login"
+                android:text="Login"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="12dp"
+                android:layout_marginEnd="24dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"/>
+    </LinearLayout>
+</RelativeLayout>

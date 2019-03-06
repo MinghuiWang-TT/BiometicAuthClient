@@ -1,0 +1,42 @@
+package com.alex.bioauth
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import butterknife.ButterKnife
+import butterknife.OnClick
+import butterknife.Optional
+import butterknife.Unbinder
+
+class LoginFragment : Fragment() {
+
+    var unbinder: Unbinder? = null
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val rootView = inflater.inflate(R.layout.login_fragment, container, false)
+        unbinder = ButterKnife.bind(this, rootView)
+        return rootView
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (unbinder != null) {
+            unbinder!!.unbind()
+        }
+    }
+
+    @Optional
+    @OnClick(R.id.btn_enroll, R.id.btn_login)
+    fun onBtnClicked(view: View) {
+    }
+
+    companion object {
+        val TAG = EnrollFragment::class.java.simpleName
+
+        public fun crateFragment(): Fragment {
+            return EnrollFragment()
+        }
+    }
+}
