@@ -55,9 +55,9 @@ class LoginFragment : BaseFragment() {
         val payload = challenge.nonce.toString() + challenge.challenge + CryptoUtil.getSalt()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             val biometricPrompt = BiometricPrompt.Builder(context)
-                .setDescription("Description")
-                .setTitle("Title")
-                .setSubtitle("Subtitle")
+                .setDescription("Authenticaition")
+                .setTitle("Fingerprint")
+                .setSubtitle("Please scan your finger with fingerprint sensor")
                 .setNegativeButton("Cancel", ContextCompat.getMainExecutor(context),
                     DialogInterface.OnClickListener { dialog, i ->
                         dialog.cancel()
