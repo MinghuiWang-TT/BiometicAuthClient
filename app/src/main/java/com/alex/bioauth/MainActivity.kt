@@ -13,6 +13,8 @@ class MainActivity : AppCompatActivity() {
         ButterKnife.bind(this)
         var fragment = EnrollFragment.crateFragment()
         setContainerFragment(fragment, EnrollFragment.TAG, true)
+
+        Rest.init("http://10.0.2.2:8877/auth/")
     }
 
     fun setContainerFragment(fragment: Fragment?, tag: String, cleanBackStack: Boolean) {
@@ -27,9 +29,5 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.content, fragment!!, tag)
             .addToBackStack(tag)
             .commit()
-    }
-
-    private fun isEnrolled(email: String): Boolean {
-        return false;
     }
 }

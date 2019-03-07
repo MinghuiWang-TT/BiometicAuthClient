@@ -1,11 +1,16 @@
 package com.alex.bioauth.model
 
-import com.google.gson.annotations.SerializedName
+import com.fasterxml.jackson.annotation.JsonAutoDetect
+import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import java.io.Serializable
 
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonAutoDetect
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 data class Challenge(
-    @SerializedName("id") val id: String? = null,
-    @SerializedName("userId") val userId: String? = null,
-    @SerializedName("challenge") val challenge: String? = null,
-    @SerializedName("nonce") val nonce: Long? = null
+    val id: String? = null,
+    val userName: String? = null,
+    val challenge: String? = null,
+    val nonce: Long? = null
 ) : Serializable

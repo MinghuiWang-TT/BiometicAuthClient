@@ -13,12 +13,12 @@ import rx.Observable
 
 interface Service {
 
-    @POST("/user")
+    @POST("user")
     fun createUser(@Body user: User): Observable<Response<User>>
 
-    @POST("/challenge/{userName}")
+    @POST("challenge/{userName}")
     fun getChallenge(@Path("userName") userName: String): Observable<Response<Challenge>>
     
-    @PUT("/challenge/{userName}")
+    @PUT("challenge/{userName}")
     fun responseChallenge(@Path("userName") userName: String, @Body response: ChallengeResponse): Observable<Response<AuthenticationResponse>>
 }

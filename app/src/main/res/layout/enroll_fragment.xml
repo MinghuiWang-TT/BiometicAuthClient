@@ -9,13 +9,15 @@
             android:layout_marginTop="96dp"
             android:id="@+id/email_container"
             android:orientation="horizontal"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginStart="48dp"
             android:layout_marginEnd="48dp"
             android:paddingTop="24dp"
             android:paddingEnd="24dp">
         <TextView
+                android:gravity="bottom"
+                android:paddingBottom="4dp"
                 android:layout_marginStart="24dp"
                 android:text="User Name:"
                 android:textSize="14sp"
@@ -23,7 +25,7 @@
                 android:layout_height="match_parent"/>
 
         <EditText
-                android:id="@+id/email_edit"
+                android:id="@+id/user_name_edit"
                 android:layout_marginStart="24dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
@@ -34,7 +36,7 @@
             android:layout_below="@id/email_container"
             android:id="@+id/secret_container"
             android:orientation="horizontal"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginStart="48dp"
             android:layout_marginEnd="48dp"
@@ -42,6 +44,8 @@
             android:paddingTop="24dp"
             android:paddingEnd="24dp">
         <TextView
+                android:gravity="bottom"
+                android:paddingBottom="4dp"
                 android:layout_marginStart="24dp"
                 android:text="Secret Number:"
                 android:textSize="14sp"
