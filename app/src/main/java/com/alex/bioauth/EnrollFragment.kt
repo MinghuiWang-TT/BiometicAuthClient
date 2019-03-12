@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.alex.bioauth.model.User
 import kotlinx.android.synthetic.main.enroll_fragment.*
@@ -35,7 +34,7 @@ class EnrollFragment : BaseFragment() {
         }
     }
 
-    fun onEnrollClicked(view: View) {
+    private fun onEnrollClicked(view: View) {
         if (!TextUtils.isEmpty(user_name_edit.text) && !TextUtils.isEmpty(secret_edit.text)) {
             val user = User();
             val userName = user_name_edit.text.toString()
@@ -48,13 +47,13 @@ class EnrollFragment : BaseFragment() {
                     .subscribeOn(Schedulers.io())
                     .subscribe({ response ->
                         if (response.errorBody() != null) {
-                            onLoginFail(userName)
+                            onEnrollFail(userName)
                             return@subscribe
                         }
-                        onLoginSuccess(response.body()!!)
+                        onEnrollSuccess(response.body()!!)
                     }, { it ->
                         android.util.Log.e("Alex", it.message, it)
-                        onLoginFail(userName)
+                        onEnrollFail(userName)
                     })
             )
         } else {
@@ -62,26 +61,25 @@ class EnrollFragment : BaseFragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun createPublicKey(userName: String): String {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            CryptoUtil.createKeyPaire(userName)
+            CryptoUtil.createKeyPair(userName)
             CryptoUtil.getPublicKey(userName)
         } else {
             ""
         }
     }
 
-    fun onLoginSuccess(user: User) {
-        Toast.makeText(context, "User :" + user.userName + "Login successed", Toast.LENGTH_LONG).show()
+    private fun onEnrollSuccess(user: User) {
+        Toast.makeText(context, "User :" + user.userName + "Enroll success", Toast.LENGTH_LONG).show()
     }
 
-    fun onLoginFail(userName: String) {
+    private fun onEnrollFail(userName: String) {
         Toast.makeText(context, "User :" + userName + "Login failed", Toast.LENGTH_LONG).show()
     }
 
     companion object {
-        val TAG = EnrollFragment::class.java.simpleName
+        val TAG = EnrollFragment::class.java.simpleName!!
 
         public fun crateFragment(): Fragment {
             return EnrollFragment()

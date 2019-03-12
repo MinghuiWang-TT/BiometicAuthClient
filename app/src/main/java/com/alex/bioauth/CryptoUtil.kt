@@ -5,6 +5,7 @@ import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.security.keystore.KeyProperties.DIGEST_SHA256
 import android.security.keystore.KeyProperties.PURPOSE_SIGN
+import android.util.Base64
 import androidx.annotation.RequiresApi
 import java.security.KeyPairGenerator
 import java.security.KeyStore
@@ -28,7 +29,7 @@ class CryptoUtil {
         private val rsaSpec = RSAKeyGenParameterSpec(2048, RSAKeyGenParameterSpec.F4)
 
         @RequiresApi(Build.VERSION_CODES.M)
-        fun createKeyPaire(name: String) {
+        fun createKeyPair(name: String) {
             keyStore.load(null)
             keyGenerator.initialize(
                 KeyGenParameterSpec.Builder(name, PURPOSE_SIGN)
@@ -42,11 +43,10 @@ class CryptoUtil {
 
         }
 
-        @RequiresApi(Build.VERSION_CODES.O)
         fun getPublicKey(name: String): String {
             keyStore.load(null)
             val publicKey = keyStore.getCertificate(name).publicKey
-            return java.util.Base64.getEncoder().encodeToString(publicKey.encoded);
+            return Base64.encodeToString(publicKey.encoded, Base64.NO_WRAP);
         }
 
 
@@ -58,12 +58,10 @@ class CryptoUtil {
             return signature
         }
 
-
-        @RequiresApi(Build.VERSION_CODES.O)
         fun sign(signature: Signature, payload: String): String {
             signature.update(payload.toByteArray(Charsets.UTF_8))
             val signatureBytes = signature.sign()
-            return java.util.Base64.getEncoder().encodeToString(signatureBytes);
+            return Base64.encodeToString(signatureBytes, Base64.NO_WRAP);
         }
 
         fun getSalt(): String {
